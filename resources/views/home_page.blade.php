@@ -23,25 +23,38 @@
                   <label for = "inputEmail4">First Name</label>
                   <input type = "text"  name="first_name" class =" form-control" 
                      id = "inputEmail4" placeholder = "First Name">
+                     @error('first_name')
+                {{ $message }}
+                 @enderror
                </div>
+                 
                
                <div class = "form-group col-md-6">
                   <label for = "inputPassword4">Last Name</label>
                   <input type = "text" name="last_name" class = "form-control" 
                      id = "inputPassword4" placeholder = "Last Name">
+                     @error('last_name')
+                {{ $message }}
+                 @enderror
                </div>
+               
             </div>
             <div class = "form-row">
                <div class = "form-group col-md-6">
                   <label for = "inputEmail4">Email</label>
                   <input type = "text"  name="email" class =" form-control" 
-                     id = "inputEmail4" placeholder = "please enter email id">
+                     id = "inputEmail4" placeholder = "please enter email id"> @error('email')
+                {{ $message }}
+                 @enderror
                </div>
                
                <div class = "form-group col-md-6">
                   <label for = "inputPassword4">Age</label>
                   <input type = "text" name="age" class = "form-control" 
                      id = "inputPassword4" placeholder = "enter age">
+                     @error('age')
+                {{ $message }}
+                 @enderror
                </div>
             </div>
            
@@ -49,7 +62,9 @@
                <div class = "form-group col-md-6">
                   <label for = "inputCity">City</label>
                   <input type = "text" class = "form-control" name="city" placeholder = "City" 
-                     id = "inputCity">
+                     id = "inputCity">@error('city')
+                {{ $message }}
+                 @enderror
                </div>
                
                <div class = "form-group col-md-4">
@@ -60,6 +75,9 @@
                      <option>Karnataka</option>
                      <option>Kerala</option>
                   </select>
+                  @error('state')
+                {{ $message }}
+                 @enderror
                </div>
                
                <div class = "form-group col-md-2">

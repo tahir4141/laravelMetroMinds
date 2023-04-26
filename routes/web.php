@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Employee;
+// namespace App\Http\Controllers\HomeController;
+
+
 
 /*
 |--------------------------------------------------------------------------
