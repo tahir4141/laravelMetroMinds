@@ -24,5 +24,11 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('home_page');
 });
-
-Route::post('/submit', 'HomeController@getData'); 
+// Route::get('/view', function () {
+//     return view('view');
+// });
+Route::post('/save', 'HomeController@saveData'); 
+Route::get('/view', 'HomeController@getData')->name('user.filter'); 
+Route::get('/edit/{id}', 'HomeController@editData'); 
+Route::put('/update/{id}', 'HomeController@updateData');
+Route::get('/delete/{id}', 'HomeController@deleteData');

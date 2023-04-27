@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Employee;
+use DB;
+
 
 class HomeController extends Controller
 {
-    public function getData(Request $request)
+    public function saveData(Request $request)
     {
         // return 'it works';
         $validatedData = $request->validate([
@@ -29,11 +31,45 @@ class HomeController extends Controller
         $employee->age = request('age');
         $employee->pincode = request('pincode');
 
-
         $employee->save(); 
-        return redirect('/home');
-        // print_r($data);
+        return redirect('/home')->with('message',"Data added Successfully");
 
+    }
+
+    public function getData()
+    {  
+        $employees =  Employee::all()->toArray();
+        // print_r($employees);
+        // die;
+        return view('view',['employees'=> $employees]);
+    }
+
+    public function editData($id)
+    {  
+        $employees =  Employee::find($id)->toArray();
+        return view('edit',compact('employees'));
+    }
+
+    public function updateData(Request $request,$id)
+    {  
+        $employee =  Employee::find($id);
+        $employee->first_name = $request->input('first_name');
+        $employee->last_name =  $request->input('last_name');
+        $employee->email =  $request->input('email');
+        $employee->city =  $request->input('city');
+        $employee->state =  $request->input('state');
+        $employee->pincode = request('pincode');
+        $employee->age =  $request->input('age');
+        $employee->update(); 
+
+        return redirect('/view')->with('messages',"Record updated Successfully");
+    }
+
+    public function deleteData($id)
+    {  
+        $data =  Employee::find($id);
+        $data->delete();
+        return redirect('/view')->with('dmessage',"Record Deleted Successfully");
     }
 }
 

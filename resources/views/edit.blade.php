@@ -13,23 +13,26 @@
       <title>Bootstrap 4 Example</title>
    </head>
    
-   <body>
-      
-      <div class = "container pt-4">
-      @if(session()->has('message'))
+   <body> 
+    @if(Session()->has('messages'))
     <div class="alert alert-success">
-        {{ session()->get('message') }}
+        toaster.success("{{session()->get('messages') }}")
     </div>
 @endif
+      
+      <div class = "container pt-4">
+     
+       
          <a href="{{url('view')}}"><button type = "submit" style="float:right; " class = "btn btn-primary">View Data</button></a>
-         <form method="post" action="/save" enctype="multipart/form-data">
+         <form method="post" action="{{url('update/'.$employees['id'])}}" enctype="multipart/form-data">
          {{ csrf_field() }}
-            <h2>Employee form</h2>
+         @method('PUT')
+            <h2>Update Employee data</h2>
             
             <div class = "form-row">
                <div class = "form-group col-md-6">
                   <label for = "inputEmail4">First Name</label>
-                  <input type = "text"  name="first_name" class =" form-control" 
+                  <input type = "text"  name="first_name" class =" form-control" value="{{$employees['first_name']}}"
                      id = "inputEmail4" placeholder = "First Name">
                      @error('first_name')
                 {{ $message }}
@@ -39,7 +42,7 @@
                
                <div class = "form-group col-md-6">
                   <label for = "inputPassword4">Last Name</label>
-                  <input type = "text" name="last_name" class = "form-control" 
+                  <input type = "text" name="last_name" class = "form-control" value="{{$employees['last_name']}}"
                      id = "inputPassword4" placeholder = "Last Name">
                      @error('last_name')
                 {{ $message }}
@@ -50,7 +53,7 @@
             <div class = "form-row">
                <div class = "form-group col-md-6">
                   <label for = "inputEmail4">Email</label>
-                  <input type = "text"  name="email" class =" form-control" 
+                  <input type = "text"  name="email" class =" form-control" value="{{$employees['email']}}"
                      id = "inputEmail4" placeholder = "please enter email id"> @error('email')
                 {{ $message }}
                  @enderror
@@ -58,7 +61,7 @@
                
                <div class = "form-group col-md-6">
                   <label for = "inputPassword4">Age</label>
-                  <input type = "text" name="age" class = "form-control" 
+                  <input type = "text" name="age" class = "form-control" value="{{$employees['age']}}"
                      id = "inputPassword4" placeholder = "enter age">
                      @error('age')
                 {{ $message }}
@@ -69,7 +72,7 @@
             <div class = "form-row">
                <div class = "form-group col-md-6">
                   <label for = "inputCity">City</label>
-                  <input type = "text" class = "form-control" name="city" placeholder = "City" 
+                  <input type = "text" class = "form-control" name="city" placeholder = "City" value="{{$employees['city']}}"
                      id = "inputCity">@error('city')
                 {{ $message }}
                  @enderror
@@ -77,11 +80,16 @@
                
                <div class = "form-group col-md-4">
                   <label for = "inputState">State</label>
-                  <select id = "inputState" name="state" class = "form-control">
-                     <option selected disabled>Select State</option>
-                     <option>Assam</option>
-                     <option>Karnataka</option>
+                  <select id = "inputState" name="state" class = "form-control" >
+                     <option  >{{ $employees['state'] }}</option>
+                     <option >Assam</option>
+                     <option>Gujarat</option>
                      <option>Kerala</option>
+                     <option>Bihar</option>
+                     <option>karnataka</option>
+                     <option>Chhattisgarh</option>
+                     
+                     
                   </select>
                   @error('state')
                 {{ $message }}
@@ -90,13 +98,13 @@
                
                <div class = "form-group col-md-2">
                   <label for = "inputZip">Pin Code</label>
-                  <input type = "text" name="pincode" class = "form-control" id = "inputZip" 
+                  <input type = "text" name="pincode" class = "form-control" id = "inputZip" value="{{$employees['pincode']}}"
                      placeholder = "Pin Code">
                </div>
             </div>
             
            
-            <button type = "submit" class = "btn btn-primary">Submit</button>
+            <button type = "submit" class = "btn btn-primary">Update</button>
          </form>
 
       </div>
