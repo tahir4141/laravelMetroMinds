@@ -38,7 +38,7 @@ class HomeController extends Controller
 
     public function getData()
     {  
-        $employees =  Employee::all()->toArray();
+        $employees =  Employee::paginate(10);
         // print_r($employees);
         // die;
         return view('view',['employees'=> $employees]);

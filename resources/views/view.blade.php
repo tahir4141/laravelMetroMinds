@@ -41,6 +41,9 @@
     </tbody>
   </table>
 </div>
+<div class="row" style="margin-left:600px;">
+  {{$employees->links()}}
+</div>
 
 </body>
 </html>

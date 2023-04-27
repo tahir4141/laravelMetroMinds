@@ -17,7 +17,7 @@ class Employee extends Migration
         $table->bigIncrements('id');
         $table->string('first_name', 20);
         $table->string('last_name',20);
-        $table->string('email');
+        $table->string('email')->unique();
         $table->integer('age');
         $table->string('city');
         $table->string('state');
