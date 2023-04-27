@@ -14,7 +14,7 @@
   
   <h2>Employee Table</h2>
   <a href="{{url('home')}}"><button type = "submit" style="float:right; " class = "btn btn-primary">Add</button></a>
-  <table class="table table-bordered p-5" id="myTable" >
+  <table class="table table-bordered p-5">
     <thead>
       <tr>
         <th>Name</th>
@@ -27,8 +27,8 @@
     <tbody>
       @foreach ($employees as $data)
       <tr >
-        <td id="usernameHeader">{{$data['first_name']}}</td>
-        <td id="emailHeader">{{$data['email']}}</td>
+        <td>{{$data['first_name']}}</td>
+        <td>{{$data['email']}}</td>
         <td>{{$data['age']}}</td>
         <td>{{$data['city']}}</td>
         <td>
@@ -41,20 +41,6 @@
     </tbody>
   </table>
 </div>
-<script>
-$(document).ready(function() {
-  $('#usernameHeader').click(function() {
-    $.get('{{ route('user.filter') }}', {orderBy: 'username'}, function(data) {
-      $('#myTable tbody').html(data);
-    });
-  });
 
-  $('#emailHeader').click(function() {
-    $.get('{{ route('user.filter') }}', {orderBy: 'email'}, function(data) {
-      $('#myTable tbody').html(data);
-    });
-  });
-});
-</script>
 </body>
 </html>

@@ -28,7 +28,7 @@ Route::get('/home', function () {
 //     return view('view');
 // });
 Route::post('/save', 'HomeController@saveData'); 
-Route::get('/view', 'HomeController@getData')->name('user.filter'); 
+Route::get('/view', 'HomeController@getData');
 Route::get('/edit/{id}', 'HomeController@editData'); 
 Route::put('/update/{id}', 'HomeController@updateData');
 Route::get('/delete/{id}', 'HomeController@deleteData');
