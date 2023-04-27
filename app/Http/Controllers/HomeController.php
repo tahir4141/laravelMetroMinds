@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Employee;
+use App\Employee;
 
 class HomeController extends Controller
 {
@@ -18,15 +18,20 @@ class HomeController extends Controller
             'state' => 'required|max:20',
             'age' => 'required|max:5',
         ]);
-        $data['firstName'] = request('first_name');
-        $data['lastName'] = request('last_name');
-        $data['email'] = request('email');
-        $data['city'] = request('city');
-        $data['state'] = request('state');
-        $data['age'] = request('age');
-        $data['pincode'] = request('pincode');
+      
+        
         $employee = new Employee; 
-        $employee->saveData(); 
+        $employee->first_name = request('first_name');
+        $employee->last_name = request('last_name');
+        $employee->email = request('email');
+        $employee->city = request('city');
+        $employee->state = request('state');
+        $employee->age = request('age');
+        $employee->pincode = request('pincode');
+
+
+        $employee->save(); 
+        return redirect('/home');
         // print_r($data);
 
     }

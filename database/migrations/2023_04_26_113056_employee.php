@@ -14,7 +14,7 @@ class Employee extends Migration
     public function up()
     {
         Schema::create('employee', function (Blueprint $table){
-        $table->id();
+        $table->bigIncrements('id');
         $table->string('first_name', 20);
         $table->string('last_name',20);
         $table->string('email');
@@ -22,8 +22,7 @@ class Employee extends Migration
         $table->string('city');
         $table->string('state');
         $table->integer('pincode');
-        $table->timestamps('created')->useCurrent();
-        $table->timestamps('updated_at')->useCurrent();
+       
     });
 }
 

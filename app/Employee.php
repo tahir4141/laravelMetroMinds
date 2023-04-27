@@ -1,18 +1,20 @@
 <?php
 
-namespace App\Model;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EmployeeModel extends Model
+class Employee extends Model
 {
-    //
-    private $table = "employee";
-    private $primarykey = "id";
-    public function saveData($data) {
-        print_r($data);
-        die;
-        $users = DB::table('users')->get(); 
-        return $users->count(); 
-      }
+
+    protected $table = "employee";
+    protected $primarykey = "id";
+    protected $fillable = ['first_name','last_name','email','age','city','state','pincode'];  
+    public $timestamps = FALSE;
+    //  public function saveData($data) {
+    //     print_r($data);
+    //     die;
+    //     $users = DB::table('users')->get(); 
+    //     return $users->count(); 
+    //   }
 }
